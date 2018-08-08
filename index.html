@@ -2,21 +2,35 @@
 <html ng-app="newsApp">
     <head>
         <meta charset="utf-8">
-        <script src="./node_modules/angular/angular.min.js"></script>
-        <script src="index.js"></script>
+        <script src="index.js" type="module"></script>
     </head>
     <body ng-controller="newsController">
         <h1>Newsfeed</h1>
         <input type="text" ng-model="desc" />
         <select ng-model="cnt">
-            <option ng-repeat="country in countries">{{country}}</option>
+            <option ng-repeat="country in countries">{{country.name}}</option>
         </select>
         <select ng-model="ctg">
-            <option ng-repeat="category in categories">{{category}}</option>
+            <option ng-repeat="category in categories">{{category.name}}</option>
         </select>
         <button ng-click="getNews(desc, cnt, ctg)">Get news</button>
-        <ul>
-            <li ng-repeat="article in articles">{{article.description}}</li>
-        </ul>
+        <div ng-repeat="article in articles" align="center">
+            <hr>
+            <table>
+                <caption>
+                    <a href={{article.url}} target="_blank">
+                        <h2>{{article.title}}</h2>
+                    </a>
+                </caption>
+                <tr>
+                    <td>
+                        <img src={{article.urlToImage}} width="500"></img>
+                    </td>
+                    <td>
+                        <p><big>{{article.description}}</big></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>
