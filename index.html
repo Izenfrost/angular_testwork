@@ -13,24 +13,7 @@
         <select ng-model="ctg">
             <option ng-repeat="category in categories">{{category.name}}</option>
         </select>
-        <button ng-click="getNews(desc, cnt, ctg)">Get news</button>
-        <div ng-repeat="article in articles" align="center">
-            <hr>
-            <table>
-                <caption>
-                    <a href={{article.url}} target="_blank">
-                        <h2>{{article.title}}</h2>
-                    </a>
-                </caption>
-                <tr>
-                    <td>
-                        <img src={{article.urlToImage}} width="500"></img>
-                    </td>
-                    <td>
-                        <p><big>{{article.description}}</big></p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <button ng-click="getFilteredNews(desc, cnt, ctg)">Get news</button>
+        <news-feed articles="articles" init="getDefaultNews()"></news-feed>
     </body>
 </html>
