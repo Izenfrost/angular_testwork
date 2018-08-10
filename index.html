@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="newsApp">
+    <head>
+        <meta charset="utf-8">
+        <script src="dist/main.js"></script>
+    </head>
+    <body ng-controller="mainController">
+        <h1>Newsfeed</h1>
+        <input type="text" ng-model="desc" />
+        <select ng-model="cnt">
+            <option ng-repeat="country in countries">{{country.name}}</option>
+        </select>
+        <select ng-model="ctg">
+            <option ng-repeat="category in categories">{{category.name}}</option>
+        </select>
+        <button ng-click="getFilteredNews(desc, cnt, ctg)">Get news</button>
+        <news-feed articles="articles" init="getDefaultNews()"></news-feed>
+    </body>
+</html>
